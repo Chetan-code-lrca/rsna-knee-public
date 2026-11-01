@@ -69,14 +69,15 @@ S6 is an attributed reproduction/adaptation of [nartaa's public notebook](https:
 
 See [final competition results](../reports/competition-final-results-2026-10-27.md), [final experiment report](../reports/final-experiment-report.md), and [model provenance](../reports/model-provenance.md).
 
-## Before making this repository public
+## Publication record
 
-- [ ] Run a dedicated all-history secret scanner on the local clone and review GitHub Actions logs/artifacts before release. A heuristic pattern audit across 63 historical commit diffs found no obvious common credential formats, but this is not a complete guarantee.
-- [ ] Decide whether the historical Git author email is acceptable to expose; changing the local Git email now does not change old commits.
-- [ ] Decide whether the older single-study DICOM note can remain in history. If not, prepare a clean release snapshot or rewrite history after making a private backup.
-- [ ] Remove or replace empty placeholders and any study-specific values not needed for reproducibility.
-- [ ] Review every notebook, commit, file, and dependency for attribution and licensing.
-- [ ] Choose an explicit licence for original code that you own. Do not apply it to third-party assets.
-- [ ] Review root README and final experiment report for accurate scores and provenance.
-- [ ] Pull the final commit locally and run git diff --check and python -m pytest -q.
-- [ ] Change repository visibility only after these checks pass.
+The public source snapshot was published on 2026-11-01 as [v0.1.0](https://github.com/Chetan-code-lrca/rsna-knee-public/releases/tag/v0.1.0).
+
+- Public repository: https://github.com/Chetan-code-lrca/rsna-knee-public
+- Snapshot source commit from the private development repository: `941809f7bf208e3b81fe4615ac458e55761c0b0c`.
+- The public repository starts with a clean Git history; the private development repository and its historical commits remain private.
+- Gitleaks scans of the private source history (122 commits), working tree, both ignored local candidate directories and exported snapshot reported no leaks.
+- Public CI run #3 passed Python compilation, CLI smoke tests, and the test suite: **50 passed, 2 skipped**.
+- The public release does not include competition data, DICOM images, pretrained model weights, or the ignored reference-candidate directories.
+
+For future work, update the public repository without importing the private development repository's history. Preserve third-party notebook and model attribution, review licences before redistributing external assets, and keep the research-only/non-clinical-use limitation visible.
