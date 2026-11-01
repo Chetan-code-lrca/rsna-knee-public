@@ -1,5 +1,7 @@
 # RSNA Knee Abnormality Detection
 
+[![Python Tests](https://github.com/Chetan-code-lrca/rsna-knee-public/actions/workflows/tests.yml/badge.svg)](https://github.com/Chetan-code-lrca/rsna-knee-public/actions/workflows/tests.yml)
+
 Research code and experiment records for the RSNA Knee Abnormality Detection competition: predicting twelve abnormalities for each knee MRI study.
 
 > **Research prototype only. Not for clinical diagnosis.**
