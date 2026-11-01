@@ -45,6 +45,71 @@ The official metric is macro-averaged ROC AUC across the twelve target columns. 
 
 Large DICOM data and checkpoints should remain outside Git unless redistribution is needed and permitted by their terms.
 
+## Project workflow
+
+The repository contains two related workflows: a reproducible local baseline pipeline and a set of research/competition artifacts. They are connected by the same knee MRI task, but they should not be treated as one identical training run.
+
+### 1. End-to-end baseline pipeline
+
+This is the local workflow exposed by the training, evaluation, prediction and submission scripts:
+
+```mermaid
+flowchart TD
+    A["RSNA knee MRI dataset"] --> B["Load study and series data"]
+    B --> C["Preprocessing"]
+    C --> D["Configure model and training"]
+    D --> E["Train baseline"]
+    E --> F["Saved checkpoint"]
+    F --> G["Evaluate checkpoint"]
+    F --> H["Generate predictions"]
+    H --> I["Align predictions with sample submission"]
+    I --> J["Submission CSV"]
+```
+
+| Stage | What happens | Where to look |
+|---|---|---|
+| Configure | Review dataset, model, training and inference settings | `configs/` |
+| Prepare | Load and preprocess the MRI study/series inputs | `src/` |
+| Train | Run the local baseline training entry point | `scripts/train.py` |
+| Evaluate | Measure a saved checkpoint | `scripts/evaluate.py` |
+| Predict | Generate target probabilities from a checkpoint | `scripts/predict.py` |
+| Submit | Format predictions against the competition template | `scripts/submit.py` |
+
+### 2. Research and validation workflow
+
+The weak-label audit is a separate analysis path. It checks report-derived rule labels against the subset with expert labels; its coverage-limited results should not be interpreted as full-dataset diagnostic performance.
+
+```mermaid
+flowchart TD
+    A["Training metadata and reports"] --> B["Report-rule weak labels"]
+    B --> C["Match against expert-labelled subset"]
+    C --> D["Measure coverage and agreement"]
+    D --> E["Document limitations and findings"]
+    E --> F["Research reports"]
+```
+
+The competition notebooks and experiment reports also record the S6 ConvNeXt reproduction/adaptation and Reference Ensemble evaluation. Those scored competition artifacts are documented separately from the local baseline pipeline; the S6 work is attributed to its original source and third-party weights.
+
+### 3. Run the local pipeline
+
+After completing [environment setup](#environment-setup) and configuring paths/settings for your dataset:
+
+```bash
+# Train the local baseline
+python -m scripts.train
+
+# Evaluate a saved checkpoint
+python -m scripts.evaluate --checkpoint outputs/baseline/fold_0/best.pt
+
+# Generate predictions
+python -m scripts.predict --checkpoint outputs/baseline/fold_0/best.pt
+
+# Format predictions as a competition submission
+python -m scripts.submit --template data/raw/sample_submission.csv --predictions outputs/predictions.csv --output outputs/submission.csv
+```
+
+Check each script's help and the files in `configs/` for supported arguments and required paths. Competition data and model checkpoints are not included in this public repository.
+
 ## Environment setup
 
 Use Python 3.11 or newer. From Linux/WSL:
