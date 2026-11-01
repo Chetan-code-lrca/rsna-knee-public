@@ -1,0 +1,16 @@
+{
+  "id": "chetaninaganti/rsna-knee-safe-fallback-submission",
+  "title": "RSNA Knee Safe Fallback Submission",
+  "code_file": "rsna_knee_safe_fallback.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "rsna-knee-abnormality-detection"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

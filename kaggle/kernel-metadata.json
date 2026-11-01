@@ -1,0 +1,16 @@
+{
+  "id": "chetan-code-lrca/rsna-knee-offline-weak-supervision-baseline",
+  "title": "RSNA Knee - Offline Weak-Supervision Baseline",
+  "code_file": "rsna_knee_submission.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_internet": "false",
+  "dataset_sources": [],
+  "competition_sources": [
+    "rsna-knee-abnormality-detection"
+  ],
+  "kernel_sources": [],
+  "model_sources": []
+}

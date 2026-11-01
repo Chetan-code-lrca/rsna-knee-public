@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Conda and local secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+credentials.json
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Linux
+*.swp
+
+# Logs
+logs/
+*.log
+
+# Data and medical imaging
+/data/
+*.dcm
+*.dicom
+*.parquet
+
+# Model weights and serialized artifacts
+weights/
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.onnx
+*.pkl
+*.pickle
+*.joblib
+*.zip
+*.tar
+*.tar.gz
+
+# Outputs
+outputs/
+
+# Reports generated during experiments
+reports/generated/
+
+# TensorBoard
+runs/
+
+# WandB
+wandb/
+
+# Kaggle
+kaggle.json
+
+# Local candidate copies; inspect/licence separately and do not commit automatically
+kaggle/reference_candidate/
+kaggle/reference_candidate_owned/

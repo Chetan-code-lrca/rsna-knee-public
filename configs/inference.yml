@@ -1,0 +1,4 @@
+checkpoint: outputs/baseline/fold_0/best.pt
+batch_size: 2
+num_workers: 0
+output_csv: outputs/predictions.csv

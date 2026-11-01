@@ -1,0 +1,9 @@
+# Paths are relative to the repository root. Dataset files are not committed.
+train_csv: data/raw/train.csv
+series_csv: data/raw/train_series.csv
+dicom_root: data/raw/train
+test_csv: data/raw/test.csv
+test_series_csv: data/raw/test_series.csv
+test_dicom_root: data/raw/test
+folds_csv: data/processed/study_folds.csv
+plane: Sagittal

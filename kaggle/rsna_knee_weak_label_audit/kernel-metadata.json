@@ -1,0 +1,16 @@
+{
+  "id": "chetaninaganti/rsna-knee-weak-label-audit",
+  "title": "RSNA Knee Weak Label Audit",
+  "code_file": "rsna_knee_weak_label_audit.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "rsna-knee-abnormality-detection"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}
