@@ -21,7 +21,7 @@ Individual scored submissions recorded on the Submissions page:
 
 The private leaderboard result is the participant/team's final result; it is not a verified private score for each individual notebook. The S6 entry is an attributed reproduction/adaptation of public work and third-party weights, not an independently created architecture/checkpoint.
 
-Read the [final competition results](reports/competition-final-results-2026-10-27.md), [final experiment report](reports/final-experiment-report.md), [model provenance and attribution](reports/model-provenance.md), [weak-label audit method](reports/weak-label-audit-method.md), [weak-label audit results](reports/weak-label-audit-results.md), [baseline diagnosis](reports/experiment-diagnosis.md), and [submission checklist](docs/competition-submission-checklist.md), and [public-release audit](reports/public-release-audit.md).
+Read the [final competition results](reports/competition-final-results-2026-10-27.md), [final experiment report](reports/final-experiment-report.md), [model provenance and attribution](reports/model-provenance.md), [weak-label audit method](reports/weak-label-audit-method.md), [weak-label audit results](reports/weak-label-audit-results.md), [baseline diagnosis](reports/experiment-diagnosis.md), [submission checklist](docs/competition-submission-checklist.md), and [public-release audit](reports/public-release-audit.md).
 
 ## Competition task and metric
 
@@ -41,6 +41,7 @@ The official metric is macro-averaged ROC AUC across the twelve target columns. 
 - `kaggle/rsna_knee_weak_label_audit/`: CPU-only audit of report-rule labels against the expert-labelled training subset.
 - `kaggle/rsna_knee_safe_fallback/`: CPU-only format fallback (constant 0.5; not competitive).
 - `reports/`: experiment results, final leaderboard outcome, provenance and research methods.
+- `CITATION.cff`: citation metadata used by GitHub's “Cite this repository” feature.
 
 Large DICOM data and checkpoints should remain outside Git unless redistribution is needed and permitted by their terms.
 
@@ -81,6 +82,10 @@ python -m pytest -q
 ```
 
 Latest public GitHub Actions run on 2026-11-01: **50 tests passed, 2 skipped**. The run also passed Python compilation and CLI smoke tests. This validates repository behaviour covered by the test suite, not hidden-test competition performance. [View CI run](https://github.com/Chetan-code-lrca/rsna-knee-public/actions/runs/41277223052).
+
+## Citing this project
+
+Citation metadata is provided in [CITATION.cff](CITATION.cff). GitHub can use it to render a formatted citation from the repository page's **Cite this repository** control.
 
 ## Responsible reuse and interpretation
 
