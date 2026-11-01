@@ -1,6 +1,6 @@
 # RSNA Knee Abnormality Detection
 
-[![Python Tests](https://github.com/Chetan-code-lrca/rsna-knee-public/actions/workflows/tests.yml/badge.svg)](https://github.com/Chetan-code-lrca/rsna-knee-public/actions/workflows/tests.yml)
+[![Python Tests](https://github.com/Chetan-code-lrca/rsna-knee-public/actions/workflows/tests.yml/badge.svg)](https://github.com/Chetan-code-lrca/rsna-knee-public/actions/workflows/tests.yml) [![Latest Release](https://img.shields.io/github/v/release/Chetan-code-lrca/rsna-knee-public)](https://github.com/Chetan-code-lrca/rsna-knee-public/releases/latest)
 
 Research code and experiment records for the RSNA Knee Abnormality Detection competition: predicting twelve abnormalities for each knee MRI study.
 
@@ -49,7 +49,8 @@ Large DICOM data and checkpoints should remain outside Git unless redistribution
 Use Python 3.11 or newer. From Linux/WSL:
 
 ```bash
-cd ~/projects/rsna-knee
+git clone https://github.com/Chetan-code-lrca/rsna-knee-public.git
+cd rsna-knee-public
 conda env create -f environment.yml
 conda activate rsna-knee
 python -m pip install -r requirements.txt
@@ -79,7 +80,7 @@ git diff --check
 python -m pytest -q
 ```
 
-Latest user-reported local result on 2026-10-27: **52 tests passed in 6.59 seconds**. This validates repository behaviour covered by the test suite, not hidden-test competition performance.
+Latest public GitHub Actions run on 2026-11-01: **50 tests passed, 2 skipped**. The run also passed Python compilation and CLI smoke tests. This validates repository behaviour covered by the test suite, not hidden-test competition performance. [View CI run](https://github.com/Chetan-code-lrca/rsna-knee-public/actions/runs/41277223052).
 
 ## Responsible reuse and interpretation
 
@@ -91,7 +92,7 @@ Latest user-reported local result on 2026-10-27: **52 tests passed in 6.59 secon
 
 ## Public release
 
-This is a clean source snapshot prepared from commit 941809f7bf20 of the private development repository. The private repository's historical Git commits were not copied into this release.
+This is a clean source snapshot prepared from commit 941809f7bf20 of the private development repository and published as [v0.1.0](https://github.com/Chetan-code-lrca/rsna-knee-public/releases/tag/v0.1.0). The private repository's historical Git commits were not copied into this release.
 
 The release contains original project utilities, baseline and audit code, tests, experiment documentation and attribution notes. It excludes ignored local candidate directories, raw competition data, DICOM files, and model checkpoints.
 
