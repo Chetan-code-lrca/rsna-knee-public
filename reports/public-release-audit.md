@@ -1,36 +1,74 @@
 # Public Release Audit
 
-**Release snapshot source commit:** `941809f7bf208e3b81fe4615ac458e55761c0b0c`
+**Publication date:** 2026-11-01 (IST)  
+**Public repository:** [Chetan-code-lrca/rsna-knee-public](https://github.com/Chetan-code-lrca/rsna-knee-public)  
+**Release:** [v0.1.0 — Initial Public Research Release](https://github.com/Chetan-code-lrca/rsna-knee-public/releases/tag/v0.1.0)  
+**Snapshot source commit:** `941809f7bf208e3b81fe4615ac458e55761c0b0c`  
+**Initial public commit:** `ad5785259767abd0ff8e128d1d190f63fef2ecc5`
 
-**Prepared:** 2026-10-27 (IST)
+## Publication outcome
 
-**Git history:** The source repository's history was not included. The public release should be pushed as a fresh repository with a new initial commit.
+The project is published as a separate public repository with a fresh Git history. The private development repository `Chetan-code-lrca/rsna-knee` remains private. Its historical commits, tags, author metadata, and older versions of study-specific documentation were not copied into the public repository.
 
-## Scope
+The first public commit uses the GitHub-provided no-reply author address. The public repository's initial source snapshot contains the code, tests, notebooks, configuration, experiment notes, and attribution documentation listed in the root README.
 
-The snapshot was generated from tracked files only. Local untracked and ignored directories were not exported. In particular, `kaggle/reference_candidate/` and `kaggle/reference_candidate_owned/` are excluded from the release.
+## Secret and data scans
 
-The source tree had no tracked raw CSV/DICOM datasets, common serialized checkpoint files, or obvious credential filenames. The preparation script ran Gitleaks against all history reachable from local refs, the working tree, and the two local candidate directories before archiving. It also ran Gitleaks against the exported snapshot. See the terminal output for the results; do not treat a successful scan as a mathematical guarantee of zero secrets.
+Before exporting the snapshot, Gitleaks was run against:
 
-## History and metadata
+- All history reachable from local refs in the private development checkout: **122 commits scanned; no leaks found**.
+- The private checkout's tracked and untracked working-tree files: **no leaks found**.
+- `kaggle/reference_candidate/`: **no leaks found**.
+- `kaggle/reference_candidate_owned/`: **no leaks found**.
+- The exported public snapshot: **no leaks found**.
 
-Because this release is a new source snapshot rather than a push of the original repository history, older commit author emails and obsolete versions of study-specific documentation are not carried into the release history. The current DICOM inspection note has been generalized to avoid including an individual study's target vector and sample-specific measurement details.
+These scans are useful automated checks, not a mathematical guarantee that no secret or sensitive data can exist. Review any future files and GitHub Actions changes before publishing them.
 
-When creating the first public commit, configure Git with the GitHub-provided no-reply email address if you do not want your school or personal email displayed in public commit metadata. Confirm the correct no-reply address in GitHub Settings → Emails before committing.
+The public repository's tracked tree was reviewed after publication: **73 files** at the initial check. No tracked DICOM files, dataset dumps, common serialized checkpoint formats, archive files, or obvious credential filenames were found. A path/name scan cannot detect every sensitive value embedded in arbitrary text or source code.
 
-## Licence and third-party assets
+## Tests and continuous integration
 
-The root MIT licence applies only to original code and documentation authored for this project where no separate terms apply. It does not grant redistribution rights for competition data, third-party notebook code, or external model weights.
+The exported snapshot's local test run completed with **50 passed, 2 skipped**.
 
-The S6 notebook is an attributed reproduction/adaptation of public work. The source identifies the S6 weights as CC BY-NC 4.0. Preserve attribution and all original licence notices. The release does not include model weights or competition DICOM data.
+The public GitHub Actions workflow was checked after publication:
 
-## Final competition result
+- Run #1 failed because the copied workflow still referenced `scripts/prepare_public_release.sh`, a private-only helper intentionally removed from the public snapshot.
+- The stale step was removed from the public workflow.
+- Run [#2](https://github.com/Chetan-code-lrca/rsna-knee-public/actions/runs/41277014957) passed.
+- Run [#3](https://github.com/Chetan-code-lrca/rsna-knee-public/actions/runs/41277223052) passed Python compilation, CLI smoke tests, and **50 tests (2 skipped)**.
 
-The reviewed leaderboard screenshots show public rank 2,465 / AUC 0.950 and final/private participant-team rank 2,381 / score 0.935. The individual public submission scores were 0.950 for the S6 reproduction/adaptation and 0.943 for the Reference Ensemble. Do not claim that the S6 model was independently developed or that the competition was won.
+The README includes a live CI badge. Future commits to the public repository trigger the same workflow.
 
-## Before publishing
+## Contents and exclusions
 
-- Re-run Gitleaks and the test suite in this exported directory.
-- Review the staged files before making the first commit.
-- Use a fresh GitHub repository; do not push the original private branch or tags.
-- Review GitHub Actions logs/artifacts created for the new public repository after its first CI run.
+The release includes the DICOM/data utility code, baseline model code, scripts, tests, Kaggle notebooks, configuration, and reports.
+
+It excludes:
+
+- Raw competition CSV/DICOM data and patient-level imaging.
+- Model checkpoints and serialized model weights.
+- The two ignored local candidate directories `kaggle/reference_candidate/` and `kaggle/reference_candidate_owned/`.
+- The private development repository's Git history.
+
+The included Kaggle notebooks have no saved cell outputs. The repository's `.gitignore` excludes common data, imaging, model artifact, credential, environment, and output paths. These rules reduce accidental additions but do not replace review of every future commit.
+
+## Licence and third-party provenance
+
+The root MIT licence is explicitly scoped to original code and documentation authored for this project where no separate terms apply. It does **not** grant redistribution rights over competition data, third-party notebooks, model weights, or other external assets.
+
+The S6 ConvNeXt entry is an attributed reproduction/adaptation of public work. Its cited weight source states **CC BY-NC 4.0**. The Reference Ensemble also adapts public community code/assets. Preserve the attribution and licence notices documented in [model provenance](model-provenance.md). Do not imply that the reproduced S6 architecture or third-party weights were independently created.
+
+## Competition outcome and use limitations
+
+The reviewed leaderboard screenshots show public rank **2,465 / AUC 0.950** and final/private participant-team rank **2,381 / score 0.935**. Individual public submission scores were 0.950 for the S6 reproduction/adaptation and 0.943 for the Reference Ensemble. The final/private score is a participant/team result, not a separately verified private score for each notebook.
+
+This is a research and competition prototype, not a clinical diagnostic system. Do not use it for patient care or clinical decisions.
+
+## Maintenance notes
+
+- Keep the original development repository private.
+- Make future public changes in this public repository, or prepare a reviewed clean snapshot if private work must be transferred.
+- Do not copy the private repository's `.git` directory, branches, or tags into this public repository.
+- Re-run tests and review data, secrets, licences, notebook outputs, and CI logs before each release.
+- Publish a new versioned release when there is a meaningful project milestone. GitHub's generated source archives are sufficient; no package or model-weight asset is currently required.
+
