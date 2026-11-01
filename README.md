@@ -81,7 +81,7 @@ git diff --check
 python -m pytest -q
 ```
 
-Latest public GitHub Actions run on 2026-11-01: **50 tests passed, 2 skipped**. The run also passed Python compilation and CLI smoke tests. This validates repository behaviour covered by the test suite, not hidden-test competition performance. [View CI run](https://github.com/Chetan-code-lrca/rsna-knee-public/actions/runs/41277223052).
+An initial post-publication GitHub Actions validation on 2026-11-01 (run #3): **50 tests passed, 2 skipped**. The run also passed Python compilation and CLI smoke tests. This validates repository behaviour covered by the test suite, not hidden-test competition performance. [View CI run](https://github.com/Chetan-code-lrca/rsna-knee-public/actions/runs/41277223052).
 
 ## Citing this project
 
