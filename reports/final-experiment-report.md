@@ -69,6 +69,8 @@ Observed local repository checks after syncing the latest project documentation:
 
 These tests cover repository helpers and the report-label parser. They do not verify the hidden test labels or prove model generalization. The audit notebook completed on Kaggle, printed per-target metrics, passed its metric sanity checks and wrote `weak_label_audit.csv`.
 
+The public release was subsequently revalidated on 2026-11-01 by [GitHub Actions run #3](https://github.com/Chetan-code-lrca/rsna-knee-public/actions/runs/41277223052): Python compilation and CLI smoke tests passed, followed by **50 unit tests passed and 2 skipped**. This is the current public CI result; the 52-test figure above is retained as a historical local run from 2026-10-27.
+
 The individual public scores are evidenced by the Kaggle Submissions page; the participant/team public and private ranks/scores are evidenced by leaderboard screenshots reviewed on 2026-10-27. The original screenshots are in the project conversation; preserve local copies for portfolio records.
 
 ## 5. Attribution and licence disclosure
