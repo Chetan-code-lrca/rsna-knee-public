@@ -128,17 +128,6 @@ If the Conda environment already exists, activate it instead of recreating it.
 
 The audit found 4,407 training studies and 24,371 training series, but only 58 studies with all twelve expert labels. The report-based weak-label audit covered 214/696 target-study pairs (30.7%) and achieved 72.4% accuracy among covered pairs. Those values are conditional on rule coverage and are not full-dataset sensitivity estimates. See [the complete audit](reports/weak-label-audit-results.md).
 
-## Train, evaluate, predict
-
-```bash
-python -m scripts.train
-python -m scripts.evaluate --checkpoint outputs/baseline/fold_0/best.pt
-python -m scripts.predict --checkpoint outputs/baseline/fold_0/best.pt
-python -m scripts.submit --template data/raw/sample_submission.csv --predictions outputs/predictions.csv --output outputs/submission.csv
-```
-
-Review `configs/` and `scripts/` for supported options. The local training workflow is distinct from the attributed S6 and Reference Ensemble Kaggle submissions.
-
 ## Tests
 
 ```bash
