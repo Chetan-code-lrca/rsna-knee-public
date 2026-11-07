@@ -112,7 +112,7 @@ Check each script's help and the files in `configs/` for supported arguments and
 
 ## Environment setup
 
-Use Python 3.11 or newer. From Linux/WSL:
+Use Python 3.11, matching the version pinned in `environment.yml` and used by GitHub Actions CI. Other Python versions are not currently covered by the project environment or CI. From Linux/WSL:
 
 ```bash
 git clone https://github.com/Chetan-code-lrca/rsna-knee-public.git
